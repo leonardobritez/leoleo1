@@ -7,6 +7,7 @@ import org.uqbar.commons.utils.Observable;
 
 @Observable
 public class Tareas {
+	
 	@JsonProperty("id")
 	private Integer id;
 	@JsonProperty("title")

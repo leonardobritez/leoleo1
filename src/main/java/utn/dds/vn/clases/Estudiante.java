@@ -19,6 +19,7 @@ public class Estudiante {
 	private String apellido;
 	@JsonProperty("github_user")
 	private String gitHubUser;
+	@JsonProperty("assignments")
 	private List<Tareas> asignaciones;
 	private String token;
 	
@@ -68,6 +69,11 @@ public class Estudiante {
 		this.nombre = temp.nombre;
 		this.legajo = temp.legajo;
 		this.gitHubUser = temp.gitHubUser;
+	}
+	
+	public void inicializarTareas() {
+		String jsonTareas = new EstudianteConexion().obtenerNotasEstudiante(this.token).getEntity(String.class);
+		this.asignaciones = new ControladorJson().obtenerDesdeJson(jsonTareas, this.getClass()).getAsignaciones();
 	}
 	
 
