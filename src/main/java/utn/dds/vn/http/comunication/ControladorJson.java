@@ -21,5 +21,15 @@ public class ControladorJson {
 		}
 	}
 	
+	public String toJson(Object object) {
+			String jsonString = null;
+			try {
+				jsonString = this.maper.writeValueAsString(object);
+				return jsonString;
+			} catch (IOException e) {
+				throw new RuntimeException("Error creating a json", e);
+			}
+			
+	}
 	
 }

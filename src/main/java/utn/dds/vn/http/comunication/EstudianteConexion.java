@@ -22,7 +22,11 @@ public class EstudianteConexion {
 		return this.obtenerDatosSegunPath(PATH_STUDENT_NOTES, token);
 	}
 	
-	public ClientResponse obtenerDatosSegunPath(String path, String token) {
+	public void actualizarDatosEstudiantiles(String token,String json) {
+		this.actualizarDatosSegunPath(PATH_STUDENT_DATA, token, json);
+	}
+	
+	private ClientResponse obtenerDatosSegunPath(String path, String token) {
 		ClientResponse datosEstudiante  = cliente
 			.resource(SERVICIO_NOTAS)
 			.path(path)
@@ -32,6 +36,12 @@ public class EstudianteConexion {
 		return datosEstudiante;
 	}
 	
+	private void actualizarDatosSegunPath(String path, String token, String datos) {
+		cliente.resource(SERVICIO_NOTAS)
+			.path(path)
+			.header("Authorization", "Bearer " + token)
+			.put(ClientResponse.class,datos);
+	}
 	
 	
 	

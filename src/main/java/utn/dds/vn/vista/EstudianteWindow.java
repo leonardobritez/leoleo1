@@ -33,12 +33,18 @@ public class EstudianteWindow extends MainWindow<Estudiante> {
 		new Label(columnas).setText("GitUser:");
 		new Label(columnas).bindValueToProperty("gitHubUser");
 		new Button(columnas).setCaption("Ver Notas").onClick(()->this.hacerAlgo());
-		new Button(columnas).setCaption("Cerrar").onClick(()->this.close());
+		new Button(columnas).setCaption("Modificar").onClick(()->this.modificarAlumnoWindowsIniciar());
+		new Button(ventana).setCaption("Cerrar").onClick(()->this.close());
 	}
 	
 	public void hacerAlgo(){
 		new TareasWindow(this, this.getModelObject()).open();
-	};
+	}
+	
+	public void modificarAlumnoWindowsIniciar(){
+		Estudiante estu = this.getModelObject().clone();
+		new EstudiantesModificacionWindow(this, estu).open();
+	}
 
 
 }
