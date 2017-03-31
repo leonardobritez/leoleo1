@@ -37,6 +37,10 @@ public class TareasWindow extends SimpleWindow<Estudiante> {
 		columnaDescripcion.setTitle("Descripcion");
 		columnaDescripcion.bindContentsToProperty("descripcion");
 		columnaDescripcion.setFixedSize(250);
+		Column<Tareas> columnaNotas = new Column<Tareas>(table);
+		columnaNotas.setTitle("Notas");
+		columnaNotas.bindContentsToProperty("notas");
+		columnaNotas.setFixedSize(250);
 		table.setHeight(300);
 		table.setWidth(600);
 	}
