@@ -1,17 +1,15 @@
 package utn.dds.vn.vista;
 
-
-import org.uqbar.arena.layout.VerticalLayout;
 import org.uqbar.arena.widgets.Button;
 import org.uqbar.arena.widgets.Label;
 import org.uqbar.arena.widgets.Panel;
 import org.uqbar.arena.widgets.TextBox;
 import org.uqbar.arena.windows.Dialog;
-import org.uqbar.arena.windows.MainWindow;
 import org.uqbar.arena.windows.WindowOwner;
 
 import utn.dds.vn.clases.Estudiante;
 
+@SuppressWarnings("serial")
 public class TokenDialog extends Dialog<Estudiante> {
 
 	public TokenDialog(WindowOwner owner, Estudiante model) {

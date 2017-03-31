@@ -28,8 +28,10 @@ public class EstudianteConexion {
 			.path(path)
 			.header("Authorization", "Bearer " + token)
 			.get(ClientResponse.class);
+		datosEstudiante.getProperties();
 		return datosEstudiante;
 	}
+	
 	
 	
 	
