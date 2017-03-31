@@ -20,4 +20,6 @@ public class ControladorJson {
 			throw new RuntimeException("Error leyendo json", e);
 		}
 	}
+	
+	
 }

@@ -1,5 +1,7 @@
 package utn.dds.vn.clases;
 
+import java.util.List;
+
 import org.codehaus.jackson.annotate.JsonProperty;
 import org.uqbar.commons.utils.Observable;
 
@@ -17,6 +19,7 @@ public class Estudiante {
 	private String apellido;
 	@JsonProperty("github_user")
 	private String gitHubUser;
+	private List<Tareas> asignaciones;
 	private String token;
 	
 	public String getLegajo() {
@@ -49,6 +52,13 @@ public class Estudiante {
 	public void setGitHubUser(String gitHubUser) {
 		this.gitHubUser = gitHubUser;
 	}
+	public List<Tareas> getAsignaciones() {
+		return asignaciones;
+	}
+	public void setAsignaciones(List<Tareas> asignaciones) {
+		this.asignaciones = asignaciones;
+	}
+	
 	public void inicializarConToken() {
 		Estudiante temp = new ControladorJson()
 				.obtenerDesdeJson(new EstudianteConexion()

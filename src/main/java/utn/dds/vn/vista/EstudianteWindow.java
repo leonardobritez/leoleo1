@@ -23,8 +23,7 @@ public class EstudianteWindow extends MainWindow<Estudiante> {
 		new Label(ventana).setText("Datos estudiantiles");
 		Panel columnas = new Panel(ventana);
 		columnas.setLayout(new ColumnLayout(2));
-		new TokenDialog(this, this.getModelObject()).open();
-		this.getModelObject().inicializarConToken();
+		new TokenDialog(this, this.getModelObject()).open();	
 		new Label(columnas).setText("Nombre:");
 		new Label(columnas).bindValueToProperty("nombre");
 		new Label(columnas).setText("Apellido:");
@@ -37,7 +36,9 @@ public class EstudianteWindow extends MainWindow<Estudiante> {
 		new Button(columnas).setCaption("Cerrar").onClick(()->this.close());
 	}
 	
-	public void hacerAlgo(){};
+	public void hacerAlgo(){
+		new TareasWindow(this, this.getModelObject()).open();
+	};
 
 
 }

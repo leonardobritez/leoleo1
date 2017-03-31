@@ -23,13 +23,18 @@ public class TokenDialog extends Dialog<Estudiante> {
 		this.setTitle("Sist. Notas");
 		new Label(mainPanel).setText("Ingrese Token");
 		new TextBox(mainPanel).setWidth(200).bindValueToProperty("token");
-		new Button(mainPanel).setCaption("Confirmar").onClick(()->this.close());
+		new Button(mainPanel).setCaption("Confirmar").onClick(()->this.cerrar());
 	}
 
 	@Override
 	protected void createFormPanel(Panel mainPanel) {
 		// TODO Auto-generated method stub
 		
+	}
+	
+	public void cerrar() {
+		this.getModelObject().inicializarConToken();
+		this.close();
 	}
 	
 }
