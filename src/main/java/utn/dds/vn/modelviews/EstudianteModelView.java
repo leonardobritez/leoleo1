@@ -23,7 +23,7 @@ public class EstudianteModelView {
 		this.estu.setLegajo(legajo);
 	}
 	public String getNombre() {
-		return estu.getNombre();
+		return this.estu.getNombre();
 	}
 	public void setNombre(String nombre) {
 		this.estu.setNombre(nombre);
@@ -39,13 +39,13 @@ public class EstudianteModelView {
 		return estu.getApellido();
 	}
 	public void setApellido(String apellido) {
-		this.setApellido(apellido);
+		this.estu.setApellido(apellido);
 	}
 	public String getGitHubUser() {
 		return estu.getGitHubUser();
 	}
 	public void setGitHubUser(String gitHubUser) {
-		this.setGitHubUser(gitHubUser);
+		this.estu.setGitHubUser(gitHubUser);
 	}
 	public List<Tarea> getAsignaciones() {
 		return estu.getAsignaciones();
@@ -55,5 +55,8 @@ public class EstudianteModelView {
 	}
 	public void cargarTareas() {
 		this.estu.inicializarTareas();
+	}
+	public Estudiante getEstu() {
+		return estu;
 	}
 }
