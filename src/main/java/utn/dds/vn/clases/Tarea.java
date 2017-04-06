@@ -3,10 +3,8 @@ package utn.dds.vn.clases;
 import java.util.List;
 
 import org.codehaus.jackson.annotate.JsonProperty;
-import org.uqbar.commons.utils.Observable;
 
-@Observable
-public class Tareas {
+public class Tarea {
 	
 	@JsonProperty("id")
 	private Integer id;
@@ -41,6 +39,7 @@ public class Tareas {
 	public void setNotas(List<Nota> notas) {
 		this.notas = notas;
 	}
-	
-	
+	public String toString(){
+		return this.nombre;
+	}
 }

@@ -7,14 +7,13 @@ import org.uqbar.arena.widgets.TextBox;
 import org.uqbar.arena.windows.Dialog;
 import org.uqbar.arena.windows.WindowOwner;
 
-import utn.dds.vn.clases.Estudiante;
+import utn.dds.vn.modelviews.EstudianteModelView;
 
 @SuppressWarnings("serial")
-public class TokenDialog extends Dialog<Estudiante> {
+public class TokenDialog extends Dialog<EstudianteModelView> {
 
-	public TokenDialog(WindowOwner owner, Estudiante model) {
+	public TokenDialog(WindowOwner owner, EstudianteModelView model) {
 		super(owner, model);
-		// TODO Auto-generated constructor stub
 	}
 
 	@Override
@@ -28,12 +27,9 @@ public class TokenDialog extends Dialog<Estudiante> {
 
 	@Override
 	protected void createFormPanel(Panel mainPanel) {
-		// TODO Auto-generated method stub
-		
 	}
 	
 	public void cerrar() {
-		this.getModelObject().inicializarConToken();
 		this.close();
 	}
 	

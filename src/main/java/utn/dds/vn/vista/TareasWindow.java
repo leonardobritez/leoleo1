@@ -1,19 +1,20 @@
 package utn.dds.vn.vista;
 
-import org.uqbar.arena.layout.HorizontalLayout;
+import org.uqbar.arena.widgets.Label;
 import org.uqbar.arena.widgets.Panel;
+import org.uqbar.arena.widgets.Selector;
 import org.uqbar.arena.widgets.tables.Column;
 import org.uqbar.arena.widgets.tables.Table;
 import org.uqbar.arena.windows.SimpleWindow;
 import org.uqbar.arena.windows.WindowOwner;
 
-import utn.dds.vn.clases.Estudiante;
-import utn.dds.vn.clases.Tareas;
+import utn.dds.vn.modelviews.NotaModelView;
+import utn.dds.vn.modelviews.TareasModelView;
 
 @SuppressWarnings("serial")
-public class TareasWindow extends SimpleWindow<Estudiante> {
+public class TareasWindow extends SimpleWindow<TareasModelView> {
 
-	public TareasWindow(WindowOwner parent, Estudiante estudiante) {
+	public TareasWindow(WindowOwner parent, TareasModelView estudiante) {
 		super(parent, estudiante);
 	}
 
@@ -24,25 +25,31 @@ public class TareasWindow extends SimpleWindow<Estudiante> {
 
 	@Override
 	protected void createFormPanel(Panel mainPanel) {
-		mainPanel.setLayout(new HorizontalLayout());
-		this.setTitle("Sist. Notas");
-		Table<Tareas> table = new Table<Tareas>(mainPanel, Tareas.class);
-		table.bindItemsToProperty("asignaciones");
-		this.getModelObject().inicializarTareas();
-		Column<Tareas> columnaTitulo = new Column<Tareas>(table);
-		columnaTitulo.setTitle("Titulo");
-		columnaTitulo.setFixedSize(100);
-		columnaTitulo.bindContentsToProperty("nombre");
-		Column<Tareas> columnaDescripcion = new Column<Tareas>(table);
-		columnaDescripcion.setTitle("Descripcion");
-		columnaDescripcion.bindContentsToProperty("descripcion");
-		columnaDescripcion.setFixedSize(250);
-		Column<Tareas> columnaNotas = new Column<Tareas>(table);
-		columnaNotas.setTitle("Notas");
-		columnaNotas.bindContentsToProperty("notas");
-		columnaNotas.setFixedSize(250);
-		table.setHeight(300);
-		table.setWidth(600);
+		this.setTitle("Tareas Info");
+		this.setMinHeight(400);
+		new Label(mainPanel).setText("Seleccione la tarea:");
+		Selector<TareasModelView> comboBoxTareas = new Selector<TareasModelView>(mainPanel);
+		comboBoxTareas.bindValueToProperty("tareaElegida");
+		comboBoxTareas.bindItemsToProperty("tareas");
+		comboBoxTareas.setWidth(500);
+		new Label(mainPanel).setText("Informacion:");
+		new Label(mainPanel).bindValueToProperty("descripcion");
+		
+		Table<NotaModelView> table = new Table<NotaModelView>(mainPanel, NotaModelView.class);
+		table.setNumberVisibleRows(8);
+		table.bindItemsToProperty("notas");
+		Column<NotaModelView> columnaTitulo = new Column<NotaModelView>(table);
+		columnaTitulo.setTitle("ID");
+		columnaTitulo.bindContentsToProperty("id");
+		Column<NotaModelView> columnaNota = new Column<NotaModelView>(table);
+		columnaNota.setTitle("Nota");
+		columnaNota.bindContentsToProperty("valor");
+		Column<NotaModelView> columnaAlta = new Column<NotaModelView>(table);
+		columnaAlta.setTitle("Alta");
+		columnaAlta.bindContentsToProperty("alta");
+		Column<NotaModelView> columnaModificacion = new Column<NotaModelView>(table);
+		columnaModificacion.setTitle("Modificacion");
+		columnaModificacion.bindContentsToProperty("modificacion");
 	}
 
 }

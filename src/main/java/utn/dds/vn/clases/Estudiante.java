@@ -1,17 +1,13 @@
 package utn.dds.vn.clases;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 import org.codehaus.jackson.annotate.JsonProperty;
-import org.codehaus.jackson.map.ObjectMapper;
-import org.uqbar.commons.utils.Observable;
 
 import utn.dds.vn.http.comunication.ControladorJson;
 import utn.dds.vn.http.comunication.EstudianteConexion;
 
-@Observable
 public class Estudiante {
 	
 	@JsonProperty("code")
@@ -23,7 +19,7 @@ public class Estudiante {
 	@JsonProperty("github_user")
 	private String gitHubUser;
 	@JsonProperty("assignments")
-	private List<Tareas> asignaciones;
+	private List<Tarea> asignaciones;
 	private String token;
 	
 	public Estudiante() {};
@@ -66,10 +62,10 @@ public class Estudiante {
 	public void setGitHubUser(String gitHubUser) {
 		this.gitHubUser = gitHubUser;
 	}
-	public List<Tareas> getAsignaciones() {
+	public List<Tarea> getAsignaciones() {
 		return asignaciones;
 	}
-	public void setAsignaciones(List<Tareas> asignaciones) {
+	public void setAsignaciones(List<Tarea> asignaciones) {
 		this.asignaciones = asignaciones;
 	}
 	

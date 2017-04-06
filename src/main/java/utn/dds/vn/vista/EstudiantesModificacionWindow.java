@@ -11,10 +11,12 @@ import org.uqbar.arena.windows.WindowOwner;
 import utn.dds.vn.clases.Estudiante;
 import utn.dds.vn.http.comunication.ControladorJson;
 import utn.dds.vn.http.comunication.EstudianteConexion;
+import utn.dds.vn.modelviews.EstudianteModelView;
 
-public class EstudiantesModificacionWindow extends SimpleWindow<Estudiante>{
+@SuppressWarnings("serial")
+public class EstudiantesModificacionWindow extends SimpleWindow<EstudianteModelView>{
 
-	public EstudiantesModificacionWindow(WindowOwner parent, Estudiante estudiante) {
+	public EstudiantesModificacionWindow(WindowOwner parent, EstudianteModelView estudiante) {
 		super(parent, estudiante);
 	}
 
@@ -43,8 +45,8 @@ public class EstudiantesModificacionWindow extends SimpleWindow<Estudiante>{
 	}
 
 	private void modificacionConfirmada() {
-		String datosNuevos = new ControladorJson().toJson(this.getModelObject());
-		new EstudianteConexion().actualizarDatosEstudiantiles(this.getModelObject().getToken(),datosNuevos);
+		//String datosNuevos = new ControladorJson().toJson(this.getModelObject());
+		//new EstudianteConexion().actualizarDatosEstudiantiles(this.getModelObject().getToken(),datosNuevos);
 		this.close();
 	}
 

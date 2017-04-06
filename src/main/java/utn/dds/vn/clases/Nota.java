@@ -1,9 +1,7 @@
 package utn.dds.vn.clases;
 
 import org.codehaus.jackson.annotate.JsonProperty;
-import org.uqbar.commons.utils.Observable;
 
-@Observable
 public class Nota {
 	@JsonProperty("id")
 	private Integer id;

@@ -6,12 +6,13 @@ import org.uqbar.arena.widgets.Label;
 import org.uqbar.arena.widgets.Panel;
 import org.uqbar.arena.windows.MainWindow;
 
-import utn.dds.vn.clases.Estudiante;
+import utn.dds.vn.modelviews.EstudianteModelView;
+import utn.dds.vn.modelviews.TareasModelView;
 
 @SuppressWarnings("serial")
-public class EstudianteWindow extends MainWindow<Estudiante> {
+public class EstudianteWindow extends MainWindow<EstudianteModelView> {
 	
-	public EstudianteWindow(Estudiante estudiante) {
+	public EstudianteWindow(EstudianteModelView estudiante) {
 		super(estudiante);
 	}
 	//Usar este token: 
@@ -20,7 +21,7 @@ public class EstudianteWindow extends MainWindow<Estudiante> {
 	@Override
 	public void createContents(Panel ventana) {
 		this.setTitle("Sist. Notas");
-		new Label(ventana).setText("Datos estudiantiles");
+		new Label(ventana).setText("Datos estudiantiles").setWidth(300);
 		Panel columnas = new Panel(ventana);
 		columnas.setLayout(new ColumnLayout(2));
 		new TokenDialog(this, this.getModelObject()).open();	
@@ -38,12 +39,13 @@ public class EstudianteWindow extends MainWindow<Estudiante> {
 	}
 	
 	public void hacerAlgo(){
-		new TareasWindow(this, this.getModelObject()).open();
+		this.getModelObject().cargarTareas();
+		new TareasWindow(this, new TareasModelView(this.getModelObject().getAsignaciones())).open();
 	}
 	
 	public void modificarAlumnoWindowsIniciar(){
-		Estudiante estu = this.getModelObject().clone();
-		new EstudiantesModificacionWindow(this, estu).open();
+		//Estudiante estu = this.getModelObject().clone();
+		new EstudiantesModificacionWindow(this, this.getModelObject()).open();
 	}
 
 
