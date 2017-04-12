@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import org.uqbar.commons.model.ObservableUtils;
 import org.uqbar.commons.utils.Observable;
 
 import utn.dds.vn.clases.Tarea;
@@ -13,13 +14,12 @@ public class TareasModelView {
 	
 	private List<Tarea> tareas;
 	private Tarea tareaElegida;
-	private String descripcion;
 	
 	public TareasModelView(List<Tarea> hw) {
 		this.tareas = hw;
 	}
 	public String getDescripcion() {
-		return descripcion;
+		return tareaElegida.getDescripcion();
 	}
 	public void setDescripcion(String descripcion) {
 		this.tareaElegida.setDescripcion(descripcion);
@@ -28,8 +28,9 @@ public class TareasModelView {
 		return tareaElegida;
 	}
 	public void setTareaElegida(Tarea tareaElegia) {
-		this.descripcion = tareaElegia.getDescripcion();
 		this.tareaElegida = tareaElegia;
+		ObservableUtils.firePropertyChanged(this, "descripcion");
+		ObservableUtils.firePropertyChanged(this, "notas");
 	}
 	public List<Tarea> getTareas() {
 		return tareas;

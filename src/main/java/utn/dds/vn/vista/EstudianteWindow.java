@@ -4,11 +4,9 @@ import org.uqbar.arena.layout.ColumnLayout;
 import org.uqbar.arena.widgets.Button;
 import org.uqbar.arena.widgets.Label;
 import org.uqbar.arena.widgets.Panel;
-import org.uqbar.arena.widgets.TextBox;
 import org.uqbar.arena.windows.MainWindow;
+import org.uqbar.commons.model.ObservableUtils;
 
-import utn.dds.vn.http.comunication.ControladorJson;
-import utn.dds.vn.http.comunication.EstudianteConexion;
 import utn.dds.vn.modelviews.EstudianteModelView;
 import utn.dds.vn.modelviews.TareasModelView;
 
@@ -29,13 +27,13 @@ public class EstudianteWindow extends MainWindow<EstudianteModelView> {
 		columnas.setLayout(new ColumnLayout(2));
 		new TokenDialog(this, this.getModelObject()).open();	
 		new Label(columnas).setText("Nombre:");
-		new TextBox(columnas).setWidth(100).bindValueToProperty("nombre");
+		new Label(columnas).setWidth(100).bindValueToProperty("nombre");
 		new Label(columnas).setText("Apellido:");
-		new TextBox(columnas).setWidth(100).bindValueToProperty("apellido");
+		new Label(columnas).setWidth(100).bindValueToProperty("apellido");
 		new Label(columnas).setText("Legajo:");
-		new TextBox(columnas).setWidth(100).bindValueToProperty("legajo");
+		new Label(columnas).setWidth(100).bindValueToProperty("legajo");
 		new Label(columnas).setText("GitUser:");
-		new TextBox(columnas).setWidth(100).bindValueToProperty("gitHubUser");
+		new Label(columnas).setWidth(100).bindValueToProperty("gitHubUser");
 		new Button(columnas).setCaption("Ver Notas").onClick(()->this.hacerAlgo());
 		new Button(columnas).setCaption("Modificar").onClick(()->this.modificarAlumnoWindowsIniciar());
 		new Button(ventana).setCaption("Cerrar").onClick(()->this.close());
@@ -47,14 +45,10 @@ public class EstudianteWindow extends MainWindow<EstudianteModelView> {
 	}
 	
 	public void modificarAlumnoWindowsIniciar(){
-		try{
-			String datosNuevos = new ControladorJson().toJson(this.getModelObject().getEstu());
-			new EstudianteConexion().actualizarDatosEstudiantiles(this.getModelObject().getToken(),datosNuevos);
-			new MensajeGeneralWindows(this, "Modificacion realizada correctamente.").open();
-		}catch(Exception ex) {
-			new MensajeGeneralWindows(this, "Error al modificar, revisar consola").open();
-			ex.printStackTrace();
-		}
+		new EstudianteModificacionWindows(this, this.getModelObject()).open();
+		ObservableUtils.firePropertyChanged(this.getModelObject(), "nombre");
+		ObservableUtils.firePropertyChanged(this.getModelObject(), "apellido");
+		ObservableUtils.firePropertyChanged(this.getModelObject(), "gitHubUser");
 	}
 
 

@@ -6,6 +6,8 @@ import org.uqbar.commons.utils.Observable;
 
 import utn.dds.vn.clases.Estudiante;
 import utn.dds.vn.clases.Tarea;
+import utn.dds.vn.http.comunication.ControladorJson;
+import utn.dds.vn.http.comunication.EstudianteConexion;
 
 @Observable
 public class EstudianteModelView {
@@ -58,5 +60,9 @@ public class EstudianteModelView {
 	}
 	public Estudiante getEstu() {
 		return estu;
+	}
+	public void actualizarDatos() {
+		String datosNuevos = new ControladorJson().toJson(this.getEstu());
+		new EstudianteConexion().actualizarDatosEstudiantiles(this.getToken(),datosNuevos);
 	}
 }
